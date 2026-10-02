@@ -3,31 +3,69 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PortPlay - Las Heras</title>
+<title>PortPlay - 257 Juegos Premium</title>
 <style>
-body{margin:0;background:#000;color:#fff;font-family:Arial;text-align:center;padding:40px 20px}
-.logo{font-size:60px}
-h1{font-size:42px;margin:10px 0}
-p{color:#aaa;line-height:1.5}
-.btn{display:inline-block;margin-top:25px;background:#00ff88;color:#000;padding:18px 40px;border-radius:30px;font-weight:bold;text-decoration:none;font-size:20px;box-shadow:0 0 20px #00ff8844}
-.btn2{display:inline-block;margin-top:15px;background:#222;color:#fff;padding:12px 25px;border-radius:20px;text-decoration:none;font-size:14px}
-.info{margin-top:30px;background:#111;padding:15px;border-radius:15px;font-size:13px;color:#777}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0a;color:#fff;font-family:Arial, sans-serif}
+.header{background:linear-gradient(135deg,#00ff88,#00cc6a);padding:20px;text-align:center;position:sticky;top:0;z-index:10}
+.header h1{color:#000;font-size:28px}
+.header p{color:#000a;font-size:14px;font-weight:bold}
+.search{margin:15px;background:#1a1a1a;border-radius:25px;padding:12px 20px;display:flex;align-items:center}
+.search input{background:transparent;border:none;color:#fff;width:100%;outline:none;font-size:16px}
+.games{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
+.game{background:#1a1a1a;border-radius:15px;padding:12px;text-align:center;border:1px solid #222}
+.game .icon{font-size:40px;margin-bottom:8px}
+.game h3{font-size:13px;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.game .cat{font-size:10px;color:#00ff88;background:#00ff8822;padding:3px 8px;border-radius:10px}
+.game .btn{margin-top:8px;background:#00ff88;color:#000;padding:6px;border-radius:20px;font-size:12px;font-weight:bold;display:block;text-decoration:none}
+.footer{text-align:center;padding:20px;color:#555;font-size:11px}
 </style>
 </head>
 <body>
-<div class="logo">🎮</div>
-<h1>PortPlay</h1>
-<p>257 juegos premium<br>Solo para Android<br>Las Heras - Mendoza</p>
-
-<a class="btn" href="https://drive.google.com/uc?export=download&id=15HHqaPCaIL0adiNCYmbVFOYITNhYRwJU">📥 DESCARGAR APK</a>
-<br>
-<a class="btn2" href="https://drive.google.com/file/d/15HHqaPCaIL0adiNCYmbVFOYITNhYRwJU/view?usp=drivesdk" target="_blank">Ver en Drive</a>
-
-<div class="info">
-PortPlay v1.0 - Mobile Only<br>
-Si te pide "Origen desconocido" dale a Permitir<br>¡Es tu propia app!
+<div class="header">
+<h1>🎮 PORTPLAY</h1>
+<p>257 JUEGOS PREMIUM - LAS HERAS</p>
 </div>
 
-<div style="margin-top:20px;color:#333;font-size:10px">PortPlay-LasHeras-Mendoza-2026 | mobile_only=true</div>
+<div class="search">
+<span>🔍</span>
+<input id="buscador" type="text" placeholder="Buscar juego... GTA, FIFA, Minecraft..." onkeyup="filtrar()">
+</div>
+
+<div class="games" id="lista"></div>
+
+<div class="footer">
+PortPlay v2.0 - Solo Android<br>
+Las Heras, Mendoza 2026<br>
+Hecho por Luca
+</div>
+
+<script>
+const juegos = [
+["GTA V","Acción","🚗"],["FIFA 24","Deportes","⚽"],["Minecraft","Aventura","⛏️"],["Call of Duty","Shooter","🔫"],["Free Fire MAX","Battle","🔥"],
+["PES 2024","Deportes","⚽"],["Forza Horizon","Carreras","🏎️"],["God of War","Acción","🪓"],["Fortnite","Battle","💥"],["Roblox","Multijugador","🧱"],
+["Among Us","Social","👨‍🚀"],["Clash Royale","Estrategia","👑"],["Brawl Stars","Acción","⭐"],["Stumble Guys","Party","😂"],["Pou","Casual","👽"]
+];
+// Generar 257
+for(let i=16;i<=257;i++){juegos.push([`Juego Premium ${i}`,"Premium",`🎮`])}
+
+const lista = document.getElementById('lista');
+function mostrar(filtro=""){
+  lista.innerHTML="";
+  juegos.forEach((j,idx)=>{
+    if(j[0].toLowerCase().includes(filtro.toLowerCase())){
+      lista.innerHTML+=`
+      <div class="game">
+        <div class="icon">${j[2]}</div>
+        <h3>${j[0]}</h3>
+        <span class="cat">${j[1]}</span>
+        <a class="btn" href="#" onclick="alert('Descargando ${j[0]}... ¡Pronto disponible!')">INSTALAR</a>
+      </div>`;
+    }
+  });
+}
+function filtrar(){ mostrar(document.getElementById('buscador').value); }
+mostrar();
+</script>
 </body>
 </html>
