@@ -1,0 +1,16 @@
+{
+  "name": "PortPlay",
+  "short_name": "PortPlay",
+  "description": "257 Juegos Premium - Las Heras Mendoza",
+  "start_url": "/PortPlay/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#00ff88",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2331/2331848.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
